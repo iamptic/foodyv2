@@ -543,7 +543,6 @@ async def merchant_recover(body: Dict[str, Any] = Body(...)):
 @app.post('/internal/notify')
 
 # === DEV-ONLY merchant recovery by phone (guarded by RECOVERY_SECRET) ===
-from fastapi import Body, HTTPException
 from typing import Any, Dict
 import os as _os
 import datetime as _dt
