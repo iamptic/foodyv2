@@ -540,8 +540,6 @@ async def merchant_recover(body: Dict[str, Any] = Body(...)):
         return {"restaurant_id": r["id"], "api_key": r["api_key"], "title": r["title"]}
 
 
-@app.post('/internal/notify')
-
 # === DEV-ONLY merchant recovery by phone (guarded by RECOVERY_SECRET) ===
 from typing import Any, Dict
 import os as _os
@@ -583,6 +581,7 @@ async def reservation_qr(code: str):
         raise HTTPException(422, "code required")
     return {"qrcode_png_base64": make_qr_png_b64(code)}
 
+@app.post('/internal/notify')
 async def internal_notify(body: Dict[str, Any] = Body(...)):
     # Placeholder: accept notifications from backend to bot or elsewhere.
     # For MVP this is a no-op, just logs input and returns ok.
